@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ljubav 💖</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- LOADING -->
+<div class="page active" id="loading">
+  <h1>❤️ Učitava se...</h1>
+</div>
+
+<!-- LOGIN -->
+<div class="page" id="login">
+  <div class="card">
+    <h2>🔐 Šifra</h2>
+    <input id="pass" placeholder="DDMMYYYY">
+    <br><br>
+    <button onclick="check()">Ulaz</button>
+  </div>
+</div>
+
+<!-- GIFT -->
+<div class="page" id="gift">
+  <div class="card">
+    <h2>🎁 Poklon</h2>
+    <button onclick="goReasons()">Otvori poklon</button>
+  </div>
+</div>
+
+<!-- REASONS -->
+<div class="page" id="reasons">
+  <div class="card">
+    <h2>💖 29 razloga</h2>
+    <p id="reasonText">Klikni dalje...</p>
+    <button onclick="nextReason()">Sledeći</button>
+    <button onclick="goPhotos()">Dalje ➜</button>
+  </div>
+</div>
+
+<!-- PHOTOS -->
+<div class="page" id="photos">
+  <div class="card">
+    <h2>📸 Naše slike</h2>
+    <img src="1.jpg">
+    <img src="2.jpg">
+    <img src="3.jpg">
+    <br>
+    <button onclick="goFinal()">Dalje ➜</button>
+  </div>
+</div>
+
+<!-- FINAL -->
+<div class="page" id="final">
+  <div class="card">
+    <h2>💖 Završna poruka</h2>
+    <p>
+      Volim te više nego juče, a manje nego sutra.<br><br>
+      Srećan rođendan, jedini. ❤️<br><br>
+      Zauvek tvoja, Keti.
+    </p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
