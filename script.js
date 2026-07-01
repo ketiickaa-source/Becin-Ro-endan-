@@ -21,12 +21,37 @@ function goFinal(){ show("final"); }
 
 // REASONS
 let reasons = [
+  let reasons = [
 "Zato što si moj mir",
 "Zato što si moj osmeh",
-"Zato što me razumeš",
+"Zato što me razumeš i kad ne pričam",
 "Zato što si moj dom",
 "Zato što si moj svet",
-"Zato što me voliš iskreno"
+"Zato što me voliš iskreno",
+"Zato što si uvek tu za mene",
+"Zato što me činiš srećnom bez truda",
+"Zato što me smiruješ kad sam nervozna",
+"Zato što veruješ u mene",
+"Zato što si moj najbolji prijatelj",
+"Zato što sa tobom sve ima smisla",
+"Zato što me grliš baš kako mi treba",
+"Zato što me slušaš",
+"Zato što si pažljiv",
+"Zato što si nežan",
+"Zato što si iskren",
+"Zato što me poštuješ",
+"Zato što si moj oslonac",
+"Zato što me motivišeš",
+"Zato što si moj osmeh svaki dan",
+"Zato što si moja sigurnost",
+"Zato što si jedini koji me razume",
+"Zato što si moj izbor",
+"Zato što si moj mir posle haosa",
+"Zato što si poseban",
+"Zato što si TI",
+"Zato što ne mogu bez tebe",
+"Zato što te volim više nego što reči mogu da opišu"
+];
 ];
 
 let i = 0;
