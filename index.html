@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ljubav 💖</title>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    background: radial-gradient(circle at top,#1a1a1a,#000);
+    color:white;
+    overflow:hidden;
+}
+
+/* SCREEN SYSTEM */
+.screen {
+    display:none;
+    height:100vh;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+    animation: fade .6s ease;
+}
+.active { display:flex; }
+
+@keyframes fade {
+    from {opacity:0; transform:scale(1.05);}
+    to {opacity:1; transform:scale(1);}
+}
+
+/* CARD */
+.card {
+    background: rgba(255,255,255,0.08);
+    padding:20px;
+    border-radius:20px;
+    max-width:420px;
+    width:90%;
+    backdrop-filter: blur(15px);
+    box-shadow:0 0 30px rgba(255,215,0,0.15);
+}
+
+/* BUTTON */
+button {
+    padding:12px 18px;
+    border:none;
+    border-radius:12px;
+    background:gold;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+button:active { transform:scale(0.95); }
+
+/* INPUT */
+input {
+    padding:10px;
+    border-radius:10px;
+    border:none;
+    text-align:center;
+}
+
+/* GLOW */
+.glow {
+    text-shadow:0 0 10px gold;
+}
+
+/* SHAKE ERROR */
+.shake {
+    animation: shake .3s;
+}
+@keyframes shake {
+    0%{transform:translateX(0)}
+    25%{transform:translateX(-5px)}
+    50%{transform:translateX(5px)}
+    100%{transform:translateX(0)}
+}
+
+/* HEARTS */
+.heart {
+    position:absolute;
+    color:pink;
+    animation: float 5s linear infinite;
+}
+@keyframes float {
+    from {transform:translateY(100vh); opacity:1;}
+    to {transform:translateY(-10vh); opacity:0;}
+}
+
+/* IMAGE */
+img {
+    width:100%;
+    border-radius:15px;
+    margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADING -->
+<div class="screen active" id="loading">
+    <h1 class="glow">💖 Učitava se ljubav...</h1>
+</div>
+
+<!-- LOGIN -->
+<div class="screen" id="login">
+    <div class="card" id="loginBox">
+        <h2>🔐 Šifra</h2>
+        <input id="pass" placeholder="DDMMYYYY">
+        <br><br>
+        <button onclick="check()">Ulaz</button>
+    </div>
+</div>
+
+<!-- GIFT -->
+<div class="screen" id="gift">
+    <div class="card">
+        <h2>🎁 Imaš poklon</h2>
+        <button onclick="openGift()">Otvori poklon</button>
+    </div>
+</div>
+
+<!-- SURPRISE -->
+<div class="screen" id="surprise">
+
+    <div class="card">
+        <h2 class="glow">💖 Ljubavi</h2>
+        <p id="typing"></p>
+    </div>
+
+    <div class="card">
+        <h2>📸 Naše slike</h2>
+        <img src="1.jpg">
+        <img src="2.jpg">
+        <img src="3.jpg">
+    </div>
+
+    <div class="card">
+        <h2>💌 Završna poruka</h2>
+        <p>Volim te više nego što reči mogu da opišu ❤️</p>
+    </div>
+
+</div>
+
+<audio id="song" src="raj.mp3"></audio>
+
+<script>
+
+setTimeout(()=>switchScreen("login"),2000);
+
+function switchScreen(id){
+    document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+// LOGIN
+function check(){
+    let p = document.getElementById("pass").value;
+    if(p === "15012026"){
+        switchScreen("gift");
+    } else {
+        let box = document.getElementById("loginBox");
+        box.classList.add("shake");
+        setTimeout(()=>box.classList.remove("shake"),300);
+        alert("Pogrešna šifra ❤️");
+    }
+}
+
+// CONFETTI
+function fireConfetti(){
+    confetti({
+        particleCount: 250,
+        spread: 100,
+        origin: { y: 0.6 }
+    });
+}
+
+// HEARTS
+function hearts(){
+    setInterval(()=>{
+        let h = document.createElement("div");
+        h.className="heart";
+        h.innerHTML="💖";
+        h.style.left=Math.random()*100+"vw";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),5000);
+    },400);
+}
+
+// TYPING
+let text="Ti si moj mir, moja sreća i ceo moj svet ❤️";
+let i=0;
+
+function type(){
+    let el=document.getElementById("typing");
+    let t=setInterval(()=>{
+        el.innerHTML+=text[i];
+        i++;
+        if(i>=text.length) clearInterval(t);
+    },50);
+}
+
+// OPEN GIFT
+function openGift(){
+    switchScreen("surprise");
+    fireConfetti();
+    document.getElementById("song").play();
+    type();
+    hearts();
+}
+
+</script>
+
+</body>
+</html>
